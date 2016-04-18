@@ -1,0 +1,75 @@
+{
+  "project_info": {
+    "project_id": "pitected",
+    "project_number": "228178815875",
+    "name": "PiTected"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228178815875:android:be3c93376ffce355",
+        "client_id": "android:com.example.pitectors.pitected",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.pitectors.pitected",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228178815875:android:84cd0db4e23df85f",
+        "client_id": "android:com.example.rnice01.pitected2",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.rnice01.pitected2",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": ["AIzaSyDPp-tATRutZUI-eE3I4TYSrvkv3jDbcmE"],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

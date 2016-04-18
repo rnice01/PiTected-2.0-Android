@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purplebg"
+    tools:context="com.example.rnice01.pitected2.ConfirmPopup">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:id="@+id/confirmBtn"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="204dp"
+        android:background="@color/button"
+        android:textColor="@color/text"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/pin"
+        android:layout_alignStart="@+id/pin"
+        android:onClick="confirmPin"
+        android:nestedScrollingEnabled="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:id="@+id/pin"
+        android:layout_alignBottom="@+id/confirmBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Enter Pin to Confirm"
+        android:id="@+id/textView2"
+        android:layout_marginBottom="33dp"
+        android:layout_above="@+id/pin"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancelBtn"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/button"
+        android:textColor="@color/text"
+        android:layout_alignTop="@+id/confirmBtn"
+        android:layout_alignRight="@+id/pin"
+        android:layout_alignEnd="@+id/pin"
+        android:onClick="cancelArm"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
