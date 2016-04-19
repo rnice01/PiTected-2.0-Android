@@ -7,18 +7,25 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.rnice01.pitected2.Main_Menu;
+import com.example.rnice01.pitected2.R;
 import com.example.rnice01.pitected2.http.HttpManager;
 import com.example.rnice01.pitected2.http.JsonParser;
+import com.example.rnice01.pitected2.logs.DeviceActivity;
+import com.example.rnice01.pitected2.objects.Devices;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by rnice01 on 3/16/2016.
+ * Created by rnice01 on 4/17/2016.
  */
-public class CheckSystem extends Service {
-    int systemStatus;
+public class UpdateSensorService extends Service {
+    List<Devices> sensorList;
+    ListView sensorListView;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -49,15 +56,17 @@ public class CheckSystem extends Service {
 
             if(started) {
                 start();
+                Toast.makeText(getApplicationContext(),"Starting the service", Toast.LENGTH_SHORT).show();
                 SharedPreferences userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
                 final String ipAddress = userPrefs.getString("ipAddress", null);
                 CheckSystemTask task = new CheckSystemTask();
-                task.execute("http://"+ ipAddress+"/PiTected-Web-App/php/getSystemStatus.php");
+                task.execute("http://"+ ipAddress+"/PiTected-Web-App/php/getLogs.php?log_type=current");
             }
         }
     };
 
     public void stop() {
+        Toast.makeText(getApplicationContext(),"Stopping the service", Toast.LENGTH_SHORT).show();
         started = false;
         handler.removeCallbacks(runnable);
     }
@@ -89,9 +98,10 @@ public class CheckSystem extends Service {
         protected void onPostExecute(String s) {
             try {
                 JsonParser parser = new JsonParser();
-                systemStatus = parser.getSystemStatus(s);
+                sensorList = parser.parseDeviceFeed(s);
 
-                 updateArmStatus(systemStatus);
+                DeviceActivity activity = new DeviceActivity();
+                activity.updateDisplay(sensorList);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -99,18 +109,7 @@ public class CheckSystem extends Service {
 
         }
 
-        private void updateArmStatus(int status) {
-            Log.i("From checkSystemService", "Changing status " +status);
-            if(status == 0){
-                Main_Menu.armDisarmBtn.setText("Arm");
-            }
-            else{
-                Main_Menu.armDisarmBtn.setText("Disarm");
-            }
 
-        }
     }
-
-
 
 }

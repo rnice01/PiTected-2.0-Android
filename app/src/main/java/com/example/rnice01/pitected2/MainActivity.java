@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             String password = userPrefs.getString("password", null);
             String ipAddress = userPrefs.getString("ip", null);
             if (username != null && password != null) {
-                requestData(ipAddress + "/php/getUserData.php?username=" + username + "&password=" + password);
+                requestData("http://"+ ipAddress+"/PiTected-Web-App/php/getUserData.php?username=" + username + "&password=" + password);
             }
         }
     }
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if(ipAddress != null){
             if (isOnline()) {
                 Log.i(TAG, "changed detected");
-                requestData(ipAddress + "/php/getUserData.php?username=" + user + "&password=" + password);
+                requestData("http://" + ipAddress + "/PiTected-Web-App/php/getUserData.php?username=" + user + "&password=" + password);
 
             }
             else{
@@ -157,20 +157,23 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            Log.i(TAG, params[0]);
             String content = getData(params[0]);
-            Log.i(TAG, content);
             return content;
         }
 
         @Override
         protected void onPostExecute(String content) {
-            try {
-                JsonParser parse = new JsonParser();
-                ArrayList result = parse.getLoginResult(content);
-                confirmPassword(result);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if(content == null){
+                Toast.makeText(getApplicationContext(), "Could not connect to your PI, check your system and confirm IP address.",Toast.LENGTH_LONG).show();
+            }else {
+                try {
+                    JsonParser parse = new JsonParser();
+                    ArrayList result = parse.getLoginResult(content);
+                    confirmPassword(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Could not connect to your PI, check your system and confirm IP address.", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
             }
         }
     }

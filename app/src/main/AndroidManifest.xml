@@ -62,6 +62,8 @@
             android:name=".RegistrationIntentService"
             android:exported="false" >
         </service>
+        <service android:name=".services.UpdateSensorService"
+            android:exported="false"></service>
 
         <activity
             android:name=".Main_Menu"

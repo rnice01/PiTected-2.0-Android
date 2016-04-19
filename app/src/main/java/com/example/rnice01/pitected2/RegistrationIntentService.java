@@ -101,7 +101,7 @@ public class RegistrationIntentService extends IntentService {
         String username = userPrefs.getString("username", null);
 
         if(isOnline()){
-            new sendTokenTask().execute(ipAddress+"/php/storeToken.php?token="+token+"&username="+username);
+            new sendTokenTask().execute("http://"+ ipAddress+"/PiTected-Web-App/php/storeToken.php?token="+token+"&username="+username);
         }
         else{
             Toast.makeText(this, "Could not connect to your Pi, check your system and IP address", Toast.LENGTH_SHORT).show();

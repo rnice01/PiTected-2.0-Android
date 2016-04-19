@@ -32,6 +32,7 @@ public class RegisterDevice extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     EditText ipAddress, username, password;
     SharedPreferences userPrefs;
+    Context context;
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     // private ProgressBar mRegistrationProgressBar;
@@ -116,7 +117,7 @@ public class RegisterDevice extends AppCompatActivity {
             editor.putString("username", username.getText().toString());
             editor.commit();
             //Verify the IP and user credentials are legit
-            requestData(ipAddress.getText().toString()+"/php/getUserData.php?username="+username.getText().toString()+"&password="+password.getText().toString());
+            requestData("http://"+ ipAddress.getText().toString()+"/PiTected-Web-App/php/getUserData.php?username="+username.getText().toString()+"&password="+password.getText().toString());
         }
         else{
             Toast.makeText(this,"Connectivity error, check your network connection",Toast.LENGTH_LONG).show();
@@ -150,21 +151,25 @@ public class RegisterDevice extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            Log.i(TAG, params[0]);
-            String content = getData(params[0]);
-            Log.i(TAG, content);
-            return content;
+
+
+                String content = getData(params[0]);
+
+                return content;
         }
 
         @Override
         protected void onPostExecute(String content) {
-            try{
-                JsonParser parse = new JsonParser();
-                Boolean result = parse.getRegistrationResult(content);
-                confirmRegistration(result);
-            }
-            catch(Exception e){
-                e.printStackTrace();
+            if(content == null){
+                Toast.makeText(getApplicationContext(), "Could not connect to your PI, check your system and confirm IP address.",Toast.LENGTH_LONG).show();
+            }else {
+                try {
+                    JsonParser parse = new JsonParser();
+                    Boolean result = parse.getRegistrationResult(content);
+                    confirmRegistration(result);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

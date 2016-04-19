@@ -31,7 +31,7 @@ public class EventLogsActivity extends AppCompatActivity {
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         final String ipAddress = userPrefs.getString("ipAddress", null);
         if(isOnline()){
-            requestData( ipAddress+"/php/getLogs.php?log_type=devices");
+            requestData("http://"+ ipAddress+"/PiTected-Web-App/php/getLogs.php?log_type=devices");
         }
         else{
             Toast.makeText(this, "Network isn't available", Toast.LENGTH_SHORT).show();

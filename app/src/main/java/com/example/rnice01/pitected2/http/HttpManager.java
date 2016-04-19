@@ -42,8 +42,8 @@ public class HttpManager {
 
         catch (Exception e) {
             //Network connectivity is checked before HttpURLConnection is used so problem may be with Pi or IP address
-            Toast.makeText(context.getApplicationContext(), "Could not connect to your PI, check your system and confirm IP address.",Toast.LENGTH_LONG).show();
 
+            return null;
         } finally {
             //close the input stream connection
             if (rd != null) {
@@ -54,31 +54,7 @@ public class HttpManager {
                 }
             }
         }
-
-
-        return uri;
     }
 
-    public static String postRequest(String uri){
-        try {
-            URL url = new URL(uri);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.connect();
-            int response = conn.getResponseCode();
-            if(response == 200){
-                return "true";
-            }
-            else{
-                return "false";
-            }
 
-        }catch(IOException ex){
-            ex.printStackTrace();
-            return "false";
-        }
-    }
 }

@@ -30,7 +30,7 @@ public class SystemLogActivity extends AppCompatActivity {
         final String ipAddress = userPrefs.getString("ipAddress", null);
 
         if(isOnline()){
-            requestData(ipAddress+"/php/getLogs.php?log_type=system");
+            requestData("http://"+ ipAddress+"/PiTected-Web-App/php/getLogs.php?log_type=system");
         }
         else{
             Toast.makeText(this, "Network isn't available", Toast.LENGTH_SHORT).show();

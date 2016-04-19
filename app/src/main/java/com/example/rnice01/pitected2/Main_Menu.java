@@ -57,6 +57,22 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
         stopService(checkSystem);
     }
 
+    @Override
+    protected  void onPause(){
+        super.onPause();
+        Intent checkSystem = new Intent(this, CheckSystem.class);
+        stopService(checkSystem);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Intent checkSystem = new Intent(this, CheckSystem.class);
+        startService(checkSystem);
+    }
+
+
+
 
 
 
@@ -65,7 +81,7 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
         if(isOnline()){
             SharedPreferences sharedPref = getSharedPreferences("userPrefs",MODE_PRIVATE);
             String ipAddress = sharedPref.getString("ipAddress", null);
-            requestData(ipAddress+"/php/checkSensors.php");
+            requestData("http://"+ ipAddress+"/PiTected-Web-App/php/checkSensors.php");
         }
     }
 

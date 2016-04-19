@@ -64,7 +64,7 @@ public class ConfirmPopup extends AppCompatActivity {
             /**Check connectivity*/
             if(isOnline()){
                 //Arm the system
-                String uri = ipAddress + "/php/armSystem.php?userID="+ userID+"&pin="+enteredPin+"&armStatus="+status;
+                String uri = "http://"+ ipAddress+"/PiTected-Web-App/php/armSystem.php?userID="+ userID+"&pin="+enteredPin+"&armStatus="+status;
                 requestData(uri);
 
             }
