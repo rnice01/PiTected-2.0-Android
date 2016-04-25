@@ -79,9 +79,9 @@ public class RegisterDevice extends AppCompatActivity {
         }
     }
     /**
-     * Check the device to make sure it has the Google Play Services APK. If
+     * Check the sensor to make sure it has the Google Play Services APK. If
      * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
+     * the Google Play Store or enable it in the sensor's system settings.
      */
     private boolean checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
@@ -91,7 +91,7 @@ public class RegisterDevice extends AppCompatActivity {
                 apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
                         .show();
             } else {
-                Log.i(TAG, "This device is not supported.");
+                Log.i(TAG, "This sensor is not supported.");
                 finish();
             }
             return false;
@@ -108,7 +108,7 @@ public class RegisterDevice extends AppCompatActivity {
 
 
 
-    public void registerDevice(View view) {
+    public void registerSensor(View view) {
         if(isOnline()){
             //Write IP address to shared preferences to use later in all GET requests
             userPrefs = getSharedPreferences("userPrefs", this.MODE_PRIVATE);

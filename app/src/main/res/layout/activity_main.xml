@@ -99,7 +99,6 @@
         android:text="First time user?"
         android:id="@+id/textView9"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/registerDevice"
         android:layout_marginBottom="5dp" />
 
 </RelativeLayout>

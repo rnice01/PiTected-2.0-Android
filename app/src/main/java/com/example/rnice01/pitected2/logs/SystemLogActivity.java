@@ -42,17 +42,17 @@ public class SystemLogActivity extends AppCompatActivity {
     //Adds items to listView
     private void updateDisplay() {
         if(eventsToList != null){
-            ArrayList<SystemLog> deviceListView = new ArrayList<>();
+            ArrayList<SystemLog> sensorListView = new ArrayList<>();
             for(SystemLog logs: eventsToList){
-                deviceListView.add(logs);
+                sensorListView.add(logs);
 
             }
 
-            adapter = new SystemLogAdapter(this, deviceListView);
+            adapter = new SystemLogAdapter(this, sensorListView);
             eventList.setAdapter(adapter);
         }
         else{
-            Toast.makeText(this, "Unable to connect to devices", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unable to connect to sensors", Toast.LENGTH_SHORT).show();
         }
     }
 

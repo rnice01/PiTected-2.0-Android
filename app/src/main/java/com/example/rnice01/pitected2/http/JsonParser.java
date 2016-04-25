@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.rnice01.pitected2.objects.Devices;
+import com.example.rnice01.pitected2.objects.Sensors;
 import com.example.rnice01.pitected2.objects.Events;
 import com.example.rnice01.pitected2.objects.SystemLog;
 
@@ -51,25 +51,25 @@ public class JsonParser {
         }
     }
 
-    //Takes content front background task, parses as JSON data for devices
-    public List<Devices> parseDeviceFeed(String content) {
+    //Takes content front background task, parses as JSON data for sensors
+    public List<Sensors> parseSensorFeed(String content) {
         try {
             JSONArray ja1 = new JSONArray(content);
-            //Creating a list of UserDeviceStatus objects
-            List<Devices> devices = new ArrayList<>();
+            //Creating a list of UserSensorStatus objects
+            List<Sensors> sensors = new ArrayList<>();
 
             for (int i = 0; i < ja1.length(); i++) {
                 JSONObject obj = ja1.getJSONObject(i);
-                Devices devicesListed = new Devices();
+                Sensors sensorsListed = new Sensors();
                 //Creating objects from the JSON data posted in the provided URI
-                devicesListed.setDeviceName(obj.getString("name"));
-                devicesListed.setDeviceStatus(obj.getString("status"));
+                sensorsListed.setSensorName(obj.getString("name"));
+                sensorsListed.setSensorStatus(obj.getString("status"));
 
 
 
-                devices.add(devicesListed);
+                sensors.add(sensorsListed);
             }
-            return devices;
+            return sensors;
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -87,10 +87,10 @@ public class JsonParser {
                 JSONObject obj = ja2.getJSONObject(i);
                 Events eventList = new Events();
                 //Creating objects from the JSON data posted in the provided URI
-                eventList.setEventDevice(obj.getString("name"));
+                eventList.setEventSensor(obj.getString("name"));
                 eventList.setEventDate(obj.getString("timestamp"));
                 eventList.setEventStatus(obj.getString("status"));
-                //Check the the status and the device type and set the
+                //Check the the status and the sensor type and set the
                 //event status accordingly
 
 

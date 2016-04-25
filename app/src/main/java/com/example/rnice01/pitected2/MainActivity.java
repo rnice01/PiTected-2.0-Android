@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-            Toast.makeText(this, "No IP Address found, have you registered this device?",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No IP Address found, have you registered this sensor?",Toast.LENGTH_LONG).show();
         }
 
 

@@ -35,7 +35,7 @@ public class ConfirmPopup extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
 
-        /**Using display metrics to get the current device
+        /**Using display metrics to get the current sensor
          * window height and width */
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

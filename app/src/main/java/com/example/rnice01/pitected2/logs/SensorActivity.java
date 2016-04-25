@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,76 +19,76 @@ import java.util.List;
 import com.example.rnice01.pitected2.R;
 import com.example.rnice01.pitected2.http.HttpManager;
 import com.example.rnice01.pitected2.http.JsonParser;
-import com.example.rnice01.pitected2.objects.Devices;
+import com.example.rnice01.pitected2.objects.Sensors;
 import com.example.rnice01.pitected2.services.UpdateSensorService;
 
-public class DeviceActivity extends AppCompatActivity {
-    ListView deviceList;
-    //List<Devices> devicesToList;
-    DeviceAdapter deviceAdapter;
+public class SensorActivity extends AppCompatActivity {
+    ListView sensorList;
+    List<Sensors> sensorsToList;
+    SensorAdapter sensorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device);
+        setContentView(R.layout.activity_sensor);
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
        final String ipAddress = userPrefs.getString("ipAddress", null);
-        Intent checkSensors = new Intent(this, UpdateSensorService.class);
-        startService(checkSensors);
+       // Intent checkSensors = new Intent(this, UpdateSensorService.class);
+        //startService(checkSensors);
 
 
 
-    /*
+
         if(isOnline()){
 
-            requestData(ipAddress + "/php/getLogs.php?log_type=current");
+            requestData("http://"+ipAddress + "/PiTected-Web-App/php/getLogs.php?log_type=current");
         }
         else{
             Toast.makeText(this,"Network isn't available", Toast.LENGTH_SHORT).show();
         }
-*/
-        deviceList = (ListView) findViewById(R.id.deviceList);
+
+        sensorList = (ListView) findViewById(R.id.sensorList);
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Intent checkSensors = new Intent(this, UpdateSensorService.class);
-        stopService(checkSensors);
-    }
-
-    @Override
-    protected  void onPause(){
-        super.onPause();
-        Intent checkSensors = new Intent(this, UpdateSensorService.class);
-        stopService(checkSensors);
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Intent checkSensors = new Intent(this, UpdateSensorService.class);
-        startService(checkSensors);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Intent checkSensors = new Intent(this, UpdateSensorService.class);
+//        stopService(checkSensors);
+//    }
+//
+//    @Override
+//    protected  void onPause(){
+//        super.onPause();
+//        Intent checkSensors = new Intent(this, UpdateSensorService.class);
+//        stopService(checkSensors);
+//    }
+//
+//    @Override
+//    protected void onResume(){
+//        super.onResume();
+//        Intent checkSensors = new Intent(this, UpdateSensorService.class);
+//        startService(checkSensors);
+//    }
 
     //Adds items to listView
-    public void updateDisplay(List<Devices> devicesToList) {
-        if(devicesToList != null){
-            ArrayList<Devices> deviceListView = new ArrayList<>();
-            for(Devices devices: devicesToList){
-                deviceListView.add(devices);
+    public void updateDisplay() {
+        if(sensorsToList != null){
+            ArrayList<Sensors> sensorListView = new ArrayList<>();
+            for(Sensors sensors: sensorsToList){
+                sensorListView.add(sensors);
 
             }
 
-            deviceAdapter = new DeviceAdapter(this, deviceListView);
-            deviceList.setAdapter(deviceAdapter);
+            sensorAdapter = new SensorAdapter(this, sensorListView);
+            sensorList.setAdapter(sensorAdapter);
         }
         else{
-            Toast.makeText(this, "Unable to connect to devices", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unable to connect to sensors", Toast.LENGTH_SHORT).show();
         }
     }
-/*
+
     //Checks network connectivity
     protected boolean isOnline(){
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -120,6 +121,7 @@ public class DeviceActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String content = HttpManager.getData(params[0]);
+            Log.i("Getting current sensors",content);
             return content;
         }
 
@@ -129,7 +131,7 @@ public class DeviceActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             try {
                 JsonParser parser = new JsonParser();
-                devicesToList = parser.parseDeviceFeed(s);
+                sensorsToList = parser.parseSensorFeed(s);
                 updateDisplay();
 
             } catch (Exception e) {
@@ -140,5 +142,5 @@ public class DeviceActivity extends AppCompatActivity {
         }
     }
 
-*/
+
 }

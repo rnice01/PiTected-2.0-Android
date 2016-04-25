@@ -5,7 +5,7 @@ package com.example.rnice01.pitected2.objects;
  */
 public class Events {
     public String eventStatus;
-    private String eventDevice;
+    private String eventSensor;
     private String eventDate;
 
 
@@ -22,12 +22,12 @@ public class Events {
         this.eventStatus = eventString;
     }
 
-    public String getEventDevice() {
-        return eventDevice;
+    public String getEventSensor() {
+        return eventSensor;
     }
 
-    public void setEventDevice(String eventDevice) {
-        this.eventDevice = eventDevice;
+    public void setEventSensor(String eventSensor) {
+        this.eventSensor = eventSensor;
     }
 
     public String getEventDate() {

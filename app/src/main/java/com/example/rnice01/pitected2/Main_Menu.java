@@ -17,7 +17,7 @@ import android.widget.ToggleButton;
 
 import com.example.rnice01.pitected2.http.HttpManager;
 import com.example.rnice01.pitected2.http.JsonParser;
-import com.example.rnice01.pitected2.logs.DeviceActivity;
+import com.example.rnice01.pitected2.logs.SensorActivity;
 import com.example.rnice01.pitected2.logs.EventLogsActivity;
 import com.example.rnice01.pitected2.logs.SystemLogActivity;
 import com.example.rnice01.pitected2.services.CheckSystem;
@@ -27,14 +27,14 @@ import java.util.ArrayList;
 import static com.example.rnice01.pitected2.http.HttpManager.getData;
 
 public class Main_Menu extends AppCompatActivity implements View.OnClickListener {
-    ImageButton deviceLogs, systemStatus, logout, systemLogs;
+    ImageButton sensorLogs, systemStatus, logout, systemLogs;
     public static Button armDisarmBtn;
     private static final String TAG = "Main Menu";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__menu);
-        deviceLogs =  (ImageButton)findViewById(R.id.deviceLogs);
+        sensorLogs =  (ImageButton)findViewById(R.id.sensorLogs);
         systemStatus = (ImageButton)findViewById(R.id.systemStatus);
         systemLogs = (ImageButton)findViewById(R.id.systemLogs);
         logout = (ImageButton)findViewById(R.id.logout);
@@ -44,7 +44,7 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
         startService(checkSystem);
 
 
-        deviceLogs.setOnClickListener(this);
+        sensorLogs.setOnClickListener(this);
         systemStatus.setOnClickListener(this);
         systemLogs.setOnClickListener(this);
         logout.setOnClickListener(this);
@@ -102,9 +102,9 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.deviceLogs:
-                Intent deviceLogIntent = new Intent(this, EventLogsActivity.class);
-                startActivity(deviceLogIntent);
+            case R.id.sensorLogs:
+                Intent sensorLogIntent = new Intent(this, EventLogsActivity.class);
+                startActivity(sensorLogIntent);
                 break;
 
             case R.id.systemLogs:
@@ -112,7 +112,7 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
                 startActivity(systemLogIntent);
                 break;
             case R.id.systemStatus:
-                Intent statusIntent = new Intent(this, DeviceActivity.class);
+                Intent statusIntent = new Intent(this, SensorActivity.class);
                 startActivity(statusIntent);
                 break;
             case R.id.logout:

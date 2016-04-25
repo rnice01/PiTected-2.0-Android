@@ -7,12 +7,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@drawable/steelbg"
-    tools:context="com.example.rnice01.pitected2.logs.DeviceActivity">
+    tools:context="com.example.rnice01.pitected2.logs.SensorActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/deviceList"
+        android:id="@+id/sensorList"
         android:layout_alignParentTop="true"
         />
 

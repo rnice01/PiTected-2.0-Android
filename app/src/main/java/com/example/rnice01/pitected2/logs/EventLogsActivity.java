@@ -31,7 +31,7 @@ public class EventLogsActivity extends AppCompatActivity {
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         final String ipAddress = userPrefs.getString("ipAddress", null);
         if(isOnline()){
-            requestData("http://"+ ipAddress+"/PiTected-Web-App/php/getLogs.php?log_type=devices");
+            requestData("http://"+ ipAddress+"/PiTected-Web-App/php/getLogs.php?log_type=sensors");
         }
         else{
             Toast.makeText(this, "Network isn't available", Toast.LENGTH_SHORT).show();
@@ -43,17 +43,17 @@ public class EventLogsActivity extends AppCompatActivity {
     //Adds items to listView
     private void updateDisplay() {
         if(eventsToList != null){
-            ArrayList<Events> deviceListView = new ArrayList<>();
-            for(Events devices: eventsToList){
-                deviceListView.add(devices);
+            ArrayList<Events> sensorListView = new ArrayList<>();
+            for(Events sensors: eventsToList){
+                sensorListView.add(sensors);
 
             }
 
-            eventAdapter = new EventLogAdapter(this, deviceListView);
+            eventAdapter = new EventLogAdapter(this, sensorListView);
             eventList.setAdapter(eventAdapter);
         }
         else{
-            Toast.makeText(this, "Unable to connect to devices", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unable to connect to sensors", Toast.LENGTH_SHORT).show();
         }
     }
 

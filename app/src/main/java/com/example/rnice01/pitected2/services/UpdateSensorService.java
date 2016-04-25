@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.example.rnice01.pitected2.R;
 import com.example.rnice01.pitected2.http.HttpManager;
 import com.example.rnice01.pitected2.http.JsonParser;
-import com.example.rnice01.pitected2.logs.DeviceActivity;
-import com.example.rnice01.pitected2.objects.Devices;
+import com.example.rnice01.pitected2.logs.SensorActivity;
+import com.example.rnice01.pitected2.objects.Sensors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  * Created by rnice01 on 4/17/2016.
  */
 public class UpdateSensorService extends Service {
-    List<Devices> sensorList;
+    List<Sensors> sensorList;
     ListView sensorListView;
     @Nullable
     @Override
@@ -98,10 +98,10 @@ public class UpdateSensorService extends Service {
         protected void onPostExecute(String s) {
             try {
                 JsonParser parser = new JsonParser();
-                sensorList = parser.parseDeviceFeed(s);
+                sensorList = parser.parseSensorFeed(s);
 
-                DeviceActivity activity = new DeviceActivity();
-                activity.updateDisplay(sensorList);
+//                SensorActivity activity = new SensorActivity();
+//                activity.updateDisplay(sensorList);
             } catch (Exception e) {
                 e.printStackTrace();
             }

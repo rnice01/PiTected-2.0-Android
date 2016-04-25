@@ -10,9 +10,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_device">DeviceActivity</string>
+    <string name="title_activity_sensor">SensorActivity</string>
     <string name="title_activity_confirm_popup">ConfirmPopup</string>
     <string name="title_activity_event_logs">EventLogsActivity</string>
     <string name="title_activity_system_log">SystemLogActivity</string>
-    <string name="title_activity_register_device">RegisterDevice</string>
+    <string name="title_activity_register_sensor">Register Activity</string>
 </resources>

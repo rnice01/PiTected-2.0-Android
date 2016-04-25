@@ -11,16 +11,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.rnice01.pitected2.R;
-import com.example.rnice01.pitected2.objects.Devices;
+import com.example.rnice01.pitected2.objects.Sensors;
 
 /**
  * Created by rnice01 on 3/16/2016.
  */
-public class DeviceAdapter extends BaseAdapter{
-    ArrayList<com.example.rnice01.pitected2.objects.Devices> list;
+public class SensorAdapter extends BaseAdapter{
+    ArrayList<com.example.rnice01.pitected2.objects.Sensors> list;
     private Activity context1;
 
-    public DeviceAdapter(Activity context, ArrayList<Devices> items)
+    public SensorAdapter(Activity context, ArrayList<Sensors> items)
     {
         context1 = context;
         this.list = items;
@@ -47,10 +47,10 @@ public class DeviceAdapter extends BaseAdapter{
         ViewHolder viewHolder = null;
 
         if(convertView == null){
-            convertView = LayoutInflater.from(context1).inflate(R.layout.device_layout, null);
+            convertView = LayoutInflater.from(context1).inflate(R.layout.sensor_layout, null);
             viewHolder = new ViewHolder();
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.deviceImage);
-            viewHolder.text = (TextView) convertView.findViewById(R.id.deviceName);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.sensorImage);
+            viewHolder.text = (TextView) convertView.findViewById(R.id.sensorName);
             /**When the List View is first created, create a row with the custom layout
              * instance and store it to later add texts and images
              */
@@ -65,11 +65,11 @@ public class DeviceAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.text.setText(list.get(position).getDeviceName());
-        /**Some checks on the status of each device
+        viewHolder.text.setText(list.get(position).getSensorName());
+        /**Some checks on the status of each sensor
          * set a specific icon for the different statuses
          */
-        if(list.get(position).getDeviceStatus().equals("1")){
+        if(list.get(position).getSensorStatus().equals("1")){
             int image_warning = R.mipmap.ic_warning_white_18dp;
             viewHolder.image.setImageResource(image_warning);
         }

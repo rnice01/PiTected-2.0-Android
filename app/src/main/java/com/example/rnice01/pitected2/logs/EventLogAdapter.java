@@ -48,9 +48,9 @@ public class EventLogAdapter extends BaseAdapter{
         if(convertView == null){
             convertView = LayoutInflater.from(context1).inflate(R.layout.events_layout, null);
             viewHolder = new ViewHolder();
-            viewHolder.name = (TextView) convertView.findViewById(R.id.device_name);
-            viewHolder.status = (TextView) convertView.findViewById(R.id.device_status);
-            viewHolder.timestamp = (TextView) convertView.findViewById(R.id.device_timestamp);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.sensor_name);
+            viewHolder.status = (TextView) convertView.findViewById(R.id.sensor_status);
+            viewHolder.timestamp = (TextView) convertView.findViewById(R.id.sensor_timestamp);
             /**When the List View is first created, create a row with the custom layout
              * instance and store it to later add texts and images
              */
@@ -65,7 +65,7 @@ public class EventLogAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.name.setText(list.get(position).getEventDevice());
+        viewHolder.name.setText(list.get(position).getEventSensor());
         if(list.get(position).getEventStatus().equals("1")){
             viewHolder.status.setText("Opened/Motion Detected");
         }

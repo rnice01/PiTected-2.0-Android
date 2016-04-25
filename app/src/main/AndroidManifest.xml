@@ -70,8 +70,8 @@
             android:label="@string/title_activity_main__menu" >
         </activity>
         <activity
-            android:name=".logs.DeviceActivity"
-            android:label="@string/title_activity_device" >
+            android:name=".logs.SensorActivity"
+            android:label="@string/title_activity_sensor" >
         </activity>
         <activity
             android:name=".ConfirmPopup"
@@ -87,7 +87,7 @@
         </activity>
         <activity
             android:name=".RegisterDevice"
-            android:label="@string/title_activity_register_device" >
+            android:label="@string/title_activity_register_sensor" >
         </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
