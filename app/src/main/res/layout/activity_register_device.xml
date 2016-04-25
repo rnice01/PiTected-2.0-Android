@@ -122,7 +122,7 @@
                 android:layout_marginBottom="54dp"
                 android:background="@color/button"
                 android:textColor="@color/text"
-                android:onClick="registerSensor"
+                android:onClick="registerDevice"
                 android:layout_gravity="center_horizontal"
 
                 android:layout_column="0"

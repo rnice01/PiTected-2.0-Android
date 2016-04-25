@@ -77,7 +77,8 @@
         android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp"
-        android:checked="false"/>
+        android:checked="false"
+        android:visibility="invisible" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -98,7 +99,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="First time user?"
         android:id="@+id/textView9"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/registerDevice"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

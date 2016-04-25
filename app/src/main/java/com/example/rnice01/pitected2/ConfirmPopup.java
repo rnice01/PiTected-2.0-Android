@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +65,7 @@ public class ConfirmPopup extends AppCompatActivity {
             /**Check connectivity*/
             if(isOnline()){
                 //Arm the system
+                Log.i("RequestingData", userID + " " + enteredPin + " " + " " + status);
                 String uri = "http://"+ ipAddress+"/PiTected-Web-App/php/armSystem.php?userID="+ userID+"&pin="+enteredPin+"&armStatus="+status;
                 requestData(uri);
 
@@ -102,7 +104,9 @@ public class ConfirmPopup extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String content = HttpManager.getData(params[0]);
+            Log.i("Getting current sensors",content);
             return content;
+
         }
 
         //This method receives a result, depending

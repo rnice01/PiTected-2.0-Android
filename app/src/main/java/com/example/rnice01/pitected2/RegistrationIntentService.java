@@ -155,7 +155,7 @@ public class RegistrationIntentService extends IntentService {
     public void sendToLogin(){
 
         Intent intentActivity = new Intent(this, MainActivity.class);
-        intentActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intentActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intentActivity);
 
     }

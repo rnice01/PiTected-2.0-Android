@@ -108,7 +108,7 @@ public class RegisterDevice extends AppCompatActivity {
 
 
 
-    public void registerSensor(View view) {
+    public void registerDevice(View view) {
         if(isOnline()){
             //Write IP address to shared preferences to use later in all GET requests
             userPrefs = getSharedPreferences("userPrefs", this.MODE_PRIVATE);
@@ -160,6 +160,7 @@ public class RegisterDevice extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String content) {
+            Log.i("RegisterPostExecute", content);
             if(content == null){
                 Toast.makeText(getApplicationContext(), "Could not connect to your PI, check your system and confirm IP address.",Toast.LENGTH_LONG).show();
             }else {

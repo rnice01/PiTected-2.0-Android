@@ -67,10 +67,10 @@ public class EventLogAdapter extends BaseAdapter{
 
         viewHolder.name.setText(list.get(position).getEventSensor());
         if(list.get(position).getEventStatus().equals("1")){
-            viewHolder.status.setText("Opened/Motion Detected");
+            viewHolder.status.setText("Active");
         }
         else if(list.get(position).getEventStatus().equals("0")){
-            viewHolder.status.setText("Closed/No Motion Detected");
+            viewHolder.status.setText("Inactive");
         }
         viewHolder.timestamp.setText(list.get(position).getEventDate());
 
