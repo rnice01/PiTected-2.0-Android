@@ -156,7 +156,7 @@ public class Main_Menu extends AppCompatActivity implements View.OnClickListener
             try {
                 JsonParser parse = new JsonParser();
                 ArrayList<String> result = parse.getSensorResult(content);
-                if(result.isEmpty()){
+                if(armDisarmBtn.getText().toString() =="Disarm" || result.isEmpty()){
                     startActivity(new Intent(Main_Menu.this,ConfirmPopup.class));
 
                 }else{
